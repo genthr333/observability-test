@@ -49,7 +49,7 @@ Dengan Git + Jenkins + Kubernetes, pipeline yang diusulkan:
 - Stage 3–5 jalan **sebelum build image** kalau ada credential bocor atau vuln kritis, pipeline **fail cepat**, tidak buang waktu build.
 - Stage 7 (image scan) penting karena base image (misal `node:18`, `python:3.11`) juga bisa punya CVE, bukan cuma kode kita.
 - Stage 10 (DAST) baru bisa jalan setelah app benar-benar running di staging, karena DAST butuh menyerang aplikasi yang hidup.
-- Ada **gate/approval manual** sebelum ke production sebagai safety net terakhir — Jenkins bisa pakai `input` step untuk ini.
+- Ada **gate/approval manual** sebelum ke production sebagai safety net terakhir Jenkins bisa pakai `input` step untuk ini.
 - Semua stage security **tidak block selamanya**: pipeline dikonfigurasi dengan **severity threshold** (misal: fail kalau ada CVE Critical/High, warning-only kalau Medium/Low) supaya tidak menghambat kecepatan delivery secara berlebihan.
 
 ---
