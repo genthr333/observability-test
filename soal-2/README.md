@@ -10,7 +10,7 @@ Kondisi: banyak aplikasi berjalan di Kubernetes, ada yang di jaringan internal, 
 
 ---
 
-## 1. Monitoring Aktif & Pasif — Deteksi Aplikasi Down
+## 1. Monitoring Aktif & Pasif Deteksi Aplikasi Down
 
 Tujuan: tim tahu aplikasi down **secepat mungkin**, idealnya sebelum user komplain.
 
