@@ -15,7 +15,7 @@
 
 ## 1. Usulan Solusi DevSecOps
 
-Prinsip DevSecOps yang dipakai: **"shift-left"** — security dicek sedini mungkin (di kode, bukan di production), dan **security jadi stage otomatis di pipeline**, bukan proses manual terpisah.
+Prinsip DevSecOps yang dipakai: **"shift-left"** security dicek sedini mungkin (di kode, bukan di production), dan **security jadi stage otomatis di pipeline**, bukan proses manual terpisah.
 
 Dengan Git + Jenkins + Kubernetes, pipeline yang diusulkan:
 
