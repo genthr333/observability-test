@@ -20,7 +20,7 @@ Prinsip DevSecOps yang dipakai: **"shift-left"** security dicek sedini mungkin (
 Dengan Git + Jenkins + Kubernetes, pipeline yang diusulkan:
 
 ```
-1. Developer push code ke Git (branch feature/*)
+1. Developer push code ke Git
         │
 2. Pull Request ke branch main/develop
         │   Jenkins trigger otomatis (webhook)
