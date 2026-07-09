@@ -56,8 +56,7 @@ Kibana (UI untuk search, filter, dashboard)
 
 ### Supaya makin efektif tambahkan trace correlation
 - Standarisasi aplikasi log dalam format **JSON terstruktur** (bukan plain text), minimal ada field: `timestamp`, `service_name`, `level`, `trace_id`, `message`.
-- Tambahkan **distributed tracing** (OpenTelemetry + Jaeger/Tempo) setiap request dikasih `trace_id` yang sama dari masuk sampai ke semua service yang dilewati.
-- Dengan `trace_id` yang sama muncul di log Kibana **dan** di trace viewer, developer bisa lompat dari "user report error jam sekian" → langsung ke trace lengkap request itu → tahu persis di service mana dan baris kode mana errornya, tanpa exec ke pod sama sekali.
+
 
 ---
 
