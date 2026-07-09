@@ -77,7 +77,7 @@ Dengan Git + Jenkins + Kubernetes, pipeline yang diusulkan:
 
 ---
 
-## 3. Cek Credential di Code (Secret Scanning)
+## 3. Secret Scanning (Cek Credential di Code)
 
 Masalah : developer sering tidak sengaja commit `.env`, API key, password DB, private key ke Git.
 
@@ -101,7 +101,7 @@ Masalah : developer sering tidak sengaja commit `.env`, API key, password DB, pr
 
 ---
 
-## 4. Cek Kerentanan Library (Patch Management)
+## 4. Patch Management
 
 Ini disebut **SCA (Software Composition Analysis)**: cek semua dependency/library pihak ketiga yang dipakai aplikasi, dicocokkan dengan database CVE.
 
