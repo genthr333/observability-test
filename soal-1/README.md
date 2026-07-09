@@ -81,7 +81,7 @@ Dengan Git + Jenkins + Kubernetes, pipeline yang diusulkan:
 
 Masalah : developer sering tidak sengaja commit `.env`, API key, password DB, private key ke Git.
 
-### Solusi berlapis (defense in depth)
+### Defense in depth
 
 **Layer 1 Pre-commit (di laptop developer, sebelum sempat push)**
 - Install **Gitleaks** atau **detect-secrets** sebagai git pre-commit hook.
