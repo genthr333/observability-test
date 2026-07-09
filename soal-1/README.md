@@ -46,7 +46,7 @@ Dengan Git + Jenkins + Kubernetes, pipeline yang diusulkan:
 ```
 
 **Kenapa strukturnya begini:**
-- Stage 3–5 jalan **sebelum build image** → kalau ada credential bocor atau vuln kritis, pipeline **fail cepat**, tidak buang waktu build.
+- Stage 3–5 jalan **sebelum build image** kalau ada credential bocor atau vuln kritis, pipeline **fail cepat**, tidak buang waktu build.
 - Stage 7 (image scan) penting karena base image (misal `node:18`, `python:3.11`) juga bisa punya CVE, bukan cuma kode kita.
 - Stage 10 (DAST) baru bisa jalan setelah app benar-benar running di staging, karena DAST butuh menyerang aplikasi yang hidup.
 - Ada **gate/approval manual** sebelum ke production sebagai safety net terakhir — Jenkins bisa pakai `input` step untuk ini.
@@ -85,15 +85,15 @@ Masalah : developer sering tidak sengaja commit `.env`, API key, password DB, pr
 
 **Layer 1 Pre-commit (di laptop developer, sebelum sempat push)**
 - Install **Gitleaks** atau **detect-secrets** sebagai git pre-commit hook.
-- Kalau ada pattern yang match credential (API key, AWS secret, private key, dsb), commit **ditolak di lokal** — belum sempat ke server sama sekali.
+- Kalau ada pattern yang match credential (API key, AWS secret, private key, dsb), commit **ditolak di lokal** belum sempat ke server sama sekali.
 
 **Layer 2 CI Pipeline (Jenkins)**
-- Stage awal Jenkins pipeline menjalankan **Gitleaks scan** ke seluruh history branch yang di-push.
+- Stage awal Jenkins pipeline menjalankan **Gitleaks scan** ke seluruh history branch yang dipush.
 - Kalau ketemu secret → build fail, notifikasi ke channel (Slack/Telegram) + PR di-block.
 
 **Layer 3 Server side / Git hosting**
 - Kalau pakai GitHub/GitLab: aktifkan **push protection** / secret scanning bawaan.
-- Kalau self-hosted Git (Gitea/GitLab CE): pasang **pre-receive hook** di server yang menjalankan gitleaks juga, supaya tidak bisa di-bypass dengan skip pre-commit hook di lokal.
+- Kalau self-hosted Git (Gitea/GitLab CE): pasang **pre-receive hook** di server yang menjalankan gitleaks juga, supaya tidak bisa dibypass dengan skip pre-commit hook di lokal.
 
 ### Kalau sudah terlanjur kecommit
 - Rotate/ganti credential yang bocor **segera** (anggap sudah kompromi, walau history di-rewrite).
