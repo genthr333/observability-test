@@ -131,8 +131,6 @@ Ini disebut **SCA (Software Composition Analysis)**: cek semua dependency/librar
 | **Aktif** | Dashboard Grafana (security posture: jumlah vuln open, trend per severity), report mingguan dari Trivy/SonarQube diexport ke Confluence/Slack channel, security scorecard per aplikasi |
 | **Pasif** | Alertmanager/Jenkins notification ke Slack/Telegram/email saat pipeline fail karena security issue; Falco (runtime security di Kubernetes) kirim alert real-time kalau ada aktivitas mencurigakan di container (misal shell dibuka di pod production); Kubernetes audit log dikirim ke SIEM/ELK untuk deteksi anomali akses |
 
-Ini konsisten dengan monitoring stack yang sudah pernah dipakai di project Dumbmerch (Prometheus/Grafana/Alertmanager + notifikasi Telegram) prinsipnya sama, tinggal ditambah dimensi security (Falco untuk runtime, Trivy/SonarQube untuk vuln data).
-
 ---
 
 ## 6. Manajemen Secret & Config
