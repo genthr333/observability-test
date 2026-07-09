@@ -138,13 +138,7 @@ Ini disebut **SCA (Software Composition Analysis)**: cek semua dependency/librar
 Prinsip: **secret tidak boleh pernah ada di Git**, dan **config dipisah dari code**.
 
 ### Config
-- Pakai **Kubernetes ConfigMap** untuk config nonsensitif (env var, feature flag, endpoint URL).
-- Config berbeda per environment (dev/staging/prod) dikelola lewat **Helm values file** (`values-dev.yaml`, `values-prod.yaml`) satu template chart, beda value per environment.
+Config (non-sensitif: URL, feature flag) taruh di Kubernetes ConfigMap, beda environment (dev/staging/prod) pakai file values beda di Helm.
 
 ### Secret
-- Level dasar: **Kubernetes Secret** (base64 encoded bukan enkripsi kuat, tapi lebih baik dari hardcode).
-- Level lebih matang: **HashiCorp Vault** atau **External Secrets Operator (ESO)** secret disimpan di Vault, di-inject ke pod secara dinamis, tidak pernah tersimpan permanen sebagai manifest di Git.
-- Kalau mau tetap GitOps-friendly tapi manifest boleh di-commit: **Sealed Secrets** (Bitnami) secret dienkripsi jadi `SealedSecret` yang aman dicommit ke Git, hanya bisa didekripsi oleh controller di cluster tujuan.
-- **Secret rotation**: policy rotate credential (DB password, API key) berkala, terutama setelah ada personnel turnover atau insiden.
-- **Least privilege via RBAC**: Service account per aplikasi hanya punya akses ke secret miliknya sendiri, bukan namespace-wide.
-- Jenkins credential (API key ke registry, kubeconfig) disimpan di **Jenkins Credentials Store** (encrypted), bukan hardcode di Jenkinsfile.
+Secret (sensitif: password, API key) jangan pernah ditulis di kode atau dicommit ke Git. Taruh di Kubernetes Secret, atau kalau mau lebih aman pakai Vault. Nilai secret di-inject ke aplikasi saat runtime (lewat environment variable atau file), bukan ditulis manual di source code. lalu kredensial yang dipakai Jenkins sendiri (misal password ke registry, kubeconfig) disimpan di Jenkins Credentials Store, bukan ditulis langsung di Jenkinsfile
