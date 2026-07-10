@@ -54,9 +54,6 @@ Kibana (UI untuk search, filter, dashboard)
 - **Elasticsearch** simpan log terpusat dengan retention policy (misal simpan 30 hari, lalu archive/hapus) jadi log tidak hilang walau pod restart/dihapus.
 - **Kibana** kasih UI: developer tinggal search `service:checkout AND level:error` misalnya, tidak perlu tahu pod mana / exec ke mana.
 
-### Supaya makin efektif tambahkan trace correlation
-- Standarisasi aplikasi log dalam format **JSON terstruktur** (bukan plain text), minimal ada field: `timestamp`, `service_name`, `level`, `trace_id`, `message`.
-
 
 ---
 
