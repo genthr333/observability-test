@@ -71,12 +71,8 @@ Case: ada laporan "aplikasi lambat", butuh cara ukur di sisi database.
 - Metric yang dipantau:
   - **Query latency** (rata-rata & p95/p99 waktu eksekusi query)
   - **Slow query count** (query yang lebih lambat dari threshold, misal >1 detik)
-  - **Active connections** vs **connection pool limit** (kalau mentok, request baru harus antri → terasa lambat)
+  - **Active connections** vs **connection pool limit** (kalau mentok, request baru harus antri = terasa lambat)
   - **Lock wait time** (transaksi saling tunggu)
   - **Replication lag** (kalau ada read replica, data yang dibaca bisa "telat")
 - **Grafana dashboard** khusus database untuk visualisasi semua metric di atas.
 - **Slow query log** diaktifkan di database, dikirim ke ELK juga supaya bisa lihat **query spesifik** mana yang lambat, bukan cuma angka agregat.
-
-### Menyambungkan ke root cause (bukan cuma "DB lambat")
-- **APM/tracing** (OpenTelemetry) di level aplikasi bisa breakdown: dari total waktu response request, berapa persen dihabiskan di call ke database vs di logic aplikasi vs di call ke service lain.
-- Ini penting supaya waktu ada laporan lambat, tim tidak cuma bisa bilang "DB lambat" tapi bisa langsung tunjuk **query mana, di request apa, jam berapa** — jauh lebih actionable dibanding cek manual satu-satu.
