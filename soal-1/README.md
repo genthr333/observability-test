@@ -89,7 +89,7 @@ Masalah : developer sering tidak sengaja commit `.env`, API key, password DB, pr
 
 **Layer 2 CI Pipeline (Jenkins)**
 - Stage awal Jenkins pipeline menjalankan **Gitleaks scan** ke seluruh history branch yang dipush.
-- Kalau ketemu secret → build fail, notifikasi ke channel (Slack/Telegram) + PR di-block.
+- Kalau ketemu secret build fail, notifikasi ke channel (Slack/Telegram) + PR di-block.
 
 **Layer 3 Server side / Git hosting**
 - Kalau pakai GitHub/GitLab: aktifkan **push protection** / secret scanning bawaan.
