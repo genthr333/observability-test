@@ -29,7 +29,7 @@ Tujuan: tim tahu aplikasi down **secepat mungkin**, idealnya sebelum user kompla
 | **Pasif** (sistem kasih tahu duluan) | Liveness/readiness probe Kubernetes otomatis restart pod bermasalah + Alertmanager kirim notifikasi kalau pod crashloop; Prometheus alert rule (misal error rate > threshold) | Blackbox exporter probe dari luar cluster tiap interval pendek (misal 30 detik) → alert kalau endpoint tidak respons / status code bukan 2xx |
 
 ### Kenapa dibedakan internal vs internet-facing
-Aplikasi internal biasanya cukup dicek "dari dalam" (pod ke pod), tapi **aplikasi yang di-expose ke internet** perlu dicek juga "dari luar" karena bisa saja pod-nya sehat tapi ada masalah di layer lain (DNS, load balancer, firewall, NGINX reverse proxy/SSL mirip case yang pernah dihandle di setup NGINX+SSL Dumbmerch) yang bikin user tidak bisa akses padahal dari sisi cluster semua terlihat normal.
+Aplikasi internal biasanya cukup dicek "dari dalam" (pod ke pod), tapi **aplikasi yang di-expose ke internet** perlu dicek juga "dari luar" karena bisa saja pod-nya sehat tapi ada masalah di layer lain (DNS, load balancer, firewall, NGINX reverse proxy/SSL) yang bikin user tidak bisa akses padahal dari sisi cluster semua terlihat normal.
 
 ---
 
